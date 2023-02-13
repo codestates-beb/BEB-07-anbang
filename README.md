@@ -13,4 +13,12 @@
 
 # 4. 팀원 소개
 
+# 5. teck Stack
+<img src="https://img.shields.io/badge/react-61DAFB?style=plastic&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/node.js-339933?style=plastic&logo=node.js&logoColor=white"/> <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=plastic&logo=tailwindcss&logoColor=white"/>
+<img src="https://img.shields.io/badge/web3.js-F16822?style=plastic&logo=web3.js&logoColor=white"/> <img src="https://img.shields.io/badge/axios-5A29E4?style=plastic&logo=axios&logoColor=white"/>
 
+<img src="https://img.shields.io/badge/express-000000?style=plastic&logo=express&logoColor=white"/>
+<img src="https://img.shields.io/badge/solidity-363636?style=plastic&logo=solidity&logoColor=white"/>
+<img src="https://img.shields.io/badge/jsonwebtoken-000000?style=plastic&logo=jsonwebtoken&logoColor=white"/>
+<img src="https://img.shields.io/badge/remix-000000?style=plastic&logo=remix&logoColor=white"/>
+<img src="https://img.shields.io/badge/mysql-4479A1?style=plastic&logo=mysql&logoColor=white"/>
