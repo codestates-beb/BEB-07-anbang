@@ -10,7 +10,7 @@ import {ethers} from "ethers"
 // stylesheet
 import "../assets/css/main.css";
 
-export default function Mypage(props) {
+export default function Mypage({userId, authorization}) {
 
 const [ownedEstate, setOwnedEstate] = useState([]);
 const [contractingEstate, setContractingEstate] = useState([]);
@@ -21,7 +21,8 @@ const makingContract = new ethers.Contract(NFT_contractAddress, erc721_ABI, prov
 
 useEffect(() => {
   axios
-    .get("http://localhost:8080/mypage/:id", NFTInfo)
+    .get(`http://localhost:8080/mypage/${userId}`,
+    { headers: { authorization: `Bearer ${authorization}` } })
     .then((result) => {
       setOwnedEstate(result.data.ownedEstate);
       setContractingEstate(result.data.contractingEstate);
@@ -44,7 +45,8 @@ useEffect(() => {
 
     useEffect(() => {
         axios
-          .get("http://localhost:8080/mypage/:id", NFTInfo)
+          .get(`http://localhost:8080/mypage/${userId}`, 
+          { headers: { authorization: `Bearer ${authorization}` } })
           .then((result) => {
             setNFTInfo([...result.data]);
           })
@@ -63,13 +65,17 @@ useEffect(() => {
           axios
             .get(`https://cors-anywhere.herokuapp.com/${tokenURL}`)
             .then((res) => {
-              NFTInfo([...res.data]);
+              setNFTInfo(prevNFTInfo => [...prevNFTInfo], {
+                nft_imgURL: res.data.imgFile,
+                types: res.data.types,
+                nft_address: res.data.nft_adress
+              })
             })
             .catch((err) => console.log(err));
         }
         fetchData();
-      }, [NFTInfo]);
-      
+      }, []);
+   
         // const [NFTInfo, setNFTInfo] = useState({});
         // const {ownedEstate, contractingEstate} = NFTInfo;
     

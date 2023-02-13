@@ -771,5 +771,7 @@ const erc20_ABI = [
 		"type": "function"
 	}
 ]
-erc20ContractAddr = '0xF07eefb41e0d1e95E74DcA270f33e9828504C961';
-module.exports = { erc20_ABI, erc20ContractAddr};
+
+const erc20_contractAddress = '0xF07eefb41e0d1e95E74DcA270f33e9828504C961'
+
+module.exports = {erc20_ABI, erc20_contractAddress };

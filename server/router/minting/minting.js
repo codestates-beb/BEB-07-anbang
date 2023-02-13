@@ -7,7 +7,6 @@ const { server_address, server_privatekey } = process.env;
 
 const { erc721_ABI,  } = require('../../contract/web3js/NFT_ABI');
 const { erc20_ABI, erc20ContractAddr } = require('../../contract/web3js/ABI');
-const caver = new Caver('https://api.baobab.klaytn.net:8651/'); //ganache provider
 
 const Web3 = require('web3');
 
@@ -62,64 +61,5 @@ router.post('/',async (req,res)=>{
     erc20Contract.methods.getProposal(tokenId).call().then(console.log)
     
 })
-router.post('/vote',async (req,res)=>{
-
-  const tokenId = 1;
-  const address = '0x23802188302BDFc1fdA5246211698227873D7Db2';
-  const vote = 0;
-
-  res.send('vote');
-  var txObj = {
-    nonce: web3.eth.getTransactionCount(server_address),
-    gasPrice: web3.eth.gasPrice,
-    gasLimit: 1000000,
-    to: erc20ContractAddr,
-    from: server_address,
-    value: '',
-    data: erc20Contract.methods.vote(address,tokenId,vote).encodeABI(),
-  };
-  const signedTx = await web3.eth.accounts.signTransaction(
-    txObj,
-    server_privatekey,
-  );
-  const approveResult = await web3.eth.sendSignedTransaction(
-    signedTx.rawTransaction,
-  );
-  console.log(approveResult);
-  erc20Contract.methods.getProposal(tokenId).call().then(console.log)
-  
-})
-// router.get('/hello', (req, res) => {
-//   console.log('hello');
-//   res.send('hello');
-// });
-
-async function approve_erc20(address, privateKey) {
-    var txObj = {
-      nonce: web3.eth.getTransactionCount(address),
-      gasPrice: web3.eth.gasPrice,
-      gasLimit: 1000000,
-      to: erc20ContractAddr,
-      from: address,
-      value: '',
-      data: erc20Contract.methods.approve(erc721ContractAddr, '100').encodeABI(),
-    };
-  
-    try {
-      const signedTx = await web3.eth.accounts.signTransaction(
-        txObj,
-        privateKey,
-      );
-      const approveResult = await web3.eth.sendSignedTransaction(
-        signedTx.rawTransaction,
-      );
-  
-      console.log(approveResult);
-      return approveResult;
-    } catch (e) {
-      console.log(e);
-      return e;
-    }
-  }
 
 module.exports = router;
