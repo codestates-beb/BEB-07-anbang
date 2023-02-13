@@ -22,6 +22,7 @@ function ContractAgree() {
   const deposit = location.state.deposit
   const rental = location.state.rental
   const types = location.state.types
+  const tokenId = location.state.tokenId;
 
   const ethereum = window.ethereum;
   const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -51,11 +52,11 @@ function ContractAgree() {
     event.preventDefault();
     const result = window.confirm("위 계약조건을 확인하고 계약하시겠습니까?");
     if(result){
-      await vote(1,0);
+      await vote(tokenId,0);
       alert("플랫폼에서 확인 절차를 거쳐서 계약이 완료됩니다.");
       navigate('/mypage')
     }else{
-      await vote(1,1);
+      await vote(tokenId,1);
       alert("취소되었습니다");
       navigate('/main')
     }
