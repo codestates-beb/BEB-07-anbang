@@ -36,6 +36,16 @@ function Contract() {
     console.log(tokenId);
     axios.post("http://localhost:8080/contract/make", {landlord_address, deposit, types, agreement, tokenId})
     .then(e=>{
+      navigate("/ContractAgree", { state: {
+        address: address,
+        deposit: deposit,
+        types: types,
+        description: description,
+        rental: rental,
+        agreement: agreement.tenantAgreement,
+        contractPeriod: agreement.contractPeriod,
+        tokenId: tokenId
+      }});
       axios
       .post("http://localhost:8080/contract/tenantcheck", agreement)
       .then((result) => {
