@@ -6,7 +6,7 @@ const {Op} = require('sequelize');
 const {sequelize} = require('../models');
 // const { MAXIMUM_KEY_NUM } = require('caver-js/types/packages/caver-wallet/src/keyring/keyringHelper');
 
-const { erc20_ABI, erc20ContractAddr } = require('../contract/web3js/ABI');
+const { erc20_ABI, erc20_contractAddress } = require('../contract/web3js/ABI');
 
 require('dotenv').config();
 const { server_address, server_privatekey } = process.env;
@@ -15,7 +15,7 @@ const Web3 = require('web3');
 
 const web3 = new Web3(new Web3.providers.HttpProvider('https://api.baobab.klaytn.net:8651/')); //ganache provider
 
-const erc20Contract = new web3.eth.Contract(erc20_ABI, erc20ContractAddr); //erc20 contract 인스턴스화
+const erc20Contract = new web3.eth.Contract(erc20_ABI, erc20_contractAddress); //erc20 contract 인스턴스화
 
 module.exports= {
     tenantcheck: async(req,res,next)=>{
@@ -151,7 +151,7 @@ module.exports= {
             nonce: web3.eth.getTransactionCount(server_address),
             gasPrice: web3.eth.gasPrice,
             gasLimit: 1000000,
-            to: erc20ContractAddr,
+            to: erc20_contractAddress,
             from: server_address,
             value: '',
             data: erc20Contract.methods.proposal(landlord_address,lessee_address,landlord_special,lessee_special,contractType,deposit,maintenance,building_status,tokenId,nft_address).encodeABI(),
