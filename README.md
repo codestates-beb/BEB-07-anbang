@@ -71,16 +71,22 @@
 
 <aside>
 💡 영상은 시간이 소요됩니다!
-
 </aside>
+
+
+<br><br/>
 
 [ 회원가입 ]
 
 ![회원가입](https://user-images.githubusercontent.com/112463036/218934660-ce2b34e9-5941-4c92-9a0a-a724a23a82ea.gif)
 
 
-[ 부동산 매물(NFT) 등록 ]
+[ 로그인 이후 NFT 확인 ]
 ![-min](https://user-images.githubusercontent.com/112463036/218934758-3ff3bc76-2aa2-4076-be5a-34e84b019aa6.gif)
+
+[ 부동산(NFT) 등록 ]
+
+![NFT](https://user-images.githubusercontent.com/112463036/218935720-b33d861b-dd45-42da-91f8-97a65aecbf1a.gif)
 
 
 [ 부동산 계약 ]
